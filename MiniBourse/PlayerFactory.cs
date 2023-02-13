@@ -2,17 +2,20 @@
 {
     internal class PlayerFactory : IPlayerFactory
     {
-        private readonly IPortfolioManager _portfolioManager;
+        private int _count = 0;
+        private readonly IPortfolioFactory _portfolioFactory;
 
-        public PlayerFactory(IPortfolioManager portfolioManager)
+        public PlayerFactory(IPortfolioFactory portfolioFactory)
         {
-            _portfolioManager = portfolioManager;
+            _portfolioFactory = portfolioFactory;
         }
         public IPlayer Create(double cash)
         {
+            _count++;
             return new Player
             {
-                Portfolio = _portfolioManager.CreatePortFolio(cash),
+                Id = _count,
+                Portfolio = _portfolioFactory.CreatePortFolio(cash),
             };
         }
     }

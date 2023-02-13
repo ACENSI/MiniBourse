@@ -8,9 +8,9 @@ namespace MiniBourseTest
 
         public PlayerFactoryTest()
         {
-            var portfolioManagerMock = new Mock<IPortfolioManager>();
-            portfolioManagerMock.Setup(p => p.CreatePortFolio(It.IsAny<double>())).Returns<double>((cash) => new Portfolio { Cash = cash });
-            _playerFactory = new PlayerFactory(portfolioManagerMock.Object);
+            var portfolioFactoryMock = new Mock<IPortfolioFactory>();
+            portfolioFactoryMock.Setup(p => p.CreatePortFolio(It.IsAny<double>())).Returns<double>((cash) => new Portfolio { Cash = cash });
+            _playerFactory = new PlayerFactory(portfolioFactoryMock.Object);
         }
 
         [Fact]

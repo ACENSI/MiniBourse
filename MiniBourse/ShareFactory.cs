@@ -13,7 +13,8 @@
 
         public IShare Create(RiskLevel riskLevel)
         {
-            return new Share { Name = _ShareNames[_count++], RiskLevel = riskLevel };
+            var name = _ShareNames[_count++];
+            return new Share { Id = _count, Name = name, RiskLevel = riskLevel, Price = _count * 10};
         }
     }
 }

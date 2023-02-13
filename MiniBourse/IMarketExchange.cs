@@ -2,7 +2,8 @@
 {
     internal interface IMarketExchange
     {
-        IEnumerable<IShare> Shares { get; }
-        void InitMarket();
+        IList<IShare> Shares { get; }
+        IList<IPlayer> Players { get; }
+        void InitMarket(int numberOfPlayer, int beginningCash);
     }
 }
